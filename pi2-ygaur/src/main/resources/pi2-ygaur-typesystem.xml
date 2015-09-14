@@ -1,8 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
     <name>pi2-ygaur-typesystem</name>
-    <description></description>
+    <description/>
     <version>1.0</version>
-    <vendor></vendor>
-  <types></types>
+    <vendor/>
+  <types>
+    <typeDescription>
+      <name>Answer</name>
+      <description>This object contains annotation for the answers.
+It will contains the floowing fields:
+begin (int): where the annotation begins
+end (int): where the annotation ends
+IsCorrect (boolean): if the answer is correct
+ComponentID (string): The name of the component which produced this annotation object
+Confidence (float): Confidence value assigned by the component which produced this object</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>IsCorrect</name>
+          <description>Stores boolean for: Is this answer correct?</description>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>ComponentID</name>
+          <description>Contains the name of the component which created this annotation.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>Confidence</name>
+          <description>Contains a float value between 0 and 1 which describes the confidence of the component.</description>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
 </typeSystemDescription>
