@@ -33,5 +33,55 @@ Confidence (float): Confidence value assigned by the component which produced th
         </featureDescription>
       </features>
     </typeDescription>
+    <typeDescription>
+      <name>Question</name>
+      <description>This information object annotates the question present in the input file. Apart from the inherited elements like begin and end, it also contains:
+-&gt; ComponentID: tells the name of the component that produced it.
+-&gt; Confidence: float value in (0,1) depicts the confidence of Component that produced it.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>ComponentID</name>
+          <description>Name of the component that created this annotation</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>Confidence</name>
+          <description>Confidence that Component ID had for this annotation</description>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>AnswerScore</name>
+      <description>Annotates the scores for each answer. Apart from the inherited elements like begin and end, it also contains:
+-&gt; ComponentID: name of the component that created the annotation
+-&gt; Confidence: Confidence ComponentID had in the annotation.
+-&gt; Score: float in (0,1) which tells how likely this answer is an answer to the question.
+-&gt; Answer: The actual answer that is being evaluated. </description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>ComponentID</name>
+          <description>Name of the component which produced this annotation</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>Confidence</name>
+          <description>Confidence that the annotator had in this annotation</description>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>Score</name>
+          <description>The score which depicts how likely is this answer going to answer the question</description>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>Answer</name>
+          <description>The Answer for which the score if being generated</description>
+          <rangeTypeName>Answer</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
   </types>
 </typeSystemDescription>
