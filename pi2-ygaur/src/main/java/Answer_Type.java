@@ -12,12 +12,12 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
-/** Inherited from MyAnnotation.
+/** Inherited from MyAnnotation. This class is an annotation for the answer type.
 Members:
-AnswerID: string that uniquely this answer.
-IsCorrect: boolean which says if the answer if a correct answer to the question.
-QuestionID: the question to which this answer is a candidate answer to.
- * Updated by JCasGen Mon Sep 14 19:28:02 EDT 2015
+AnswerID: string that uniquely identifies this answer.
+IsCorrect: boolean which says if the answer is a correct answer to the question.
+QuestionID: the question to which this answer is a candidate answer.
+ * Updated by JCasGen Mon Sep 14 21:13:00 EDT 2015
  * @generated */
 public class Answer_Type extends MyAnnotation_Type {
   /** @generated 

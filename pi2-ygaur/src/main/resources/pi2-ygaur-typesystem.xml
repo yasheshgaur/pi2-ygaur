@@ -7,7 +7,7 @@
   <types>
     <typeDescription>
       <name>MyAnnotation</name>
-      <description>This is a super class for all the defined annotations.
+      <description>This is a super class for all the defined annotations. Every other class will inherit from this.
 It will contain: 
 -&gt;ComponentID: The name of the component that produced it.
 -&gt;Confidence: A float value in (0,1) which shows the confidence of ComponentID in the annotation.</description>
@@ -28,8 +28,11 @@ It will contain:
     <typeDescription>
       <name>Question</name>
       <description>Inherited from MyAnnotation.
+This class is an annotation for the questions. 
 Members:
--&gt;QuestionID: string which uniquely identifies a question. For eg., the questions can have IDs like 'Q1', 'Q2' .. etc. This ID will be sufficient to distinguish it from an answer as well </description>
+-&gt;QuestionID: string which uniquely identifies a question. 
+For eg., the questions can have IDs like 'Q1', 'Q2' .. etc. 
+This ID will be sufficient to distinguish it from an answer as well </description>
       <supertypeName>MyAnnotation</supertypeName>
       <features>
         <featureDescription>
@@ -41,11 +44,11 @@ Members:
     </typeDescription>
     <typeDescription>
       <name>Answer</name>
-      <description>Inherited from MyAnnotation.
+      <description>Inherited from MyAnnotation. This class is an annotation for the answer type.
 Members:
-AnswerID: string that uniquely this answer.
-IsCorrect: boolean which says if the answer if a correct answer to the question.
-QuestionID: the question to which this answer is a candidate answer to.</description>
+AnswerID: string that uniquely identifies this answer.
+IsCorrect: boolean which says if the answer is a correct answer to the question.
+QuestionID: the question to which this answer is a candidate answer.</description>
       <supertypeName>MyAnnotation</supertypeName>
       <features>
         <featureDescription>
@@ -67,7 +70,7 @@ QuestionID: the question to which this answer is a candidate answer to.</descrip
     </typeDescription>
     <typeDescription>
       <name>Token</name>
-      <description>Inherited from MyAnnotation.
+      <description>Inherited from MyAnnotation. This is an annotation for the Tokens
 Members:
 -&gt;SentenceID: The QuestionID or AnswerID to which this token belongs.
 -&gt;TokenID: The sequence number of the token within the SentenceID. Useful when adjaceny information is requried while calculating NGrams. 
@@ -89,7 +92,7 @@ Combination of SentenceID and TokenID uniquely charachterizes the Token </descri
     </typeDescription>
     <typeDescription>
       <name>NGram</name>
-      <description>Inherited from MyAnnotation.
+      <description>Inherited from MyAnnotation. This class is an annotation for all the NGrams
 Members:
 -&gt;SentenceID: The sentence (QuestionID or AnswerID) to which this NGram belongs.</description>
       <supertypeName>MyAnnotation</supertypeName>
@@ -103,7 +106,7 @@ Members:
     </typeDescription>
     <typeDescription>
       <name>AnswerScore</name>
-      <description>Inherited from MyAnnotation.
+      <description>Inherited from MyAnnotation. This class is an annotation for all the answer scores
 Members:
 -&gt;AnswerID: The answer to which this score is. 
 -&gt;Score: The score for the overlap.</description>

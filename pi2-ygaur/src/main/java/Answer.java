@@ -9,12 +9,12 @@ import org.apache.uima.jcas.cas.TOP_Type;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
-/** Inherited from MyAnnotation.
+/** Inherited from MyAnnotation. This class is an annotation for the answer type.
 Members:
-AnswerID: string that uniquely this answer.
-IsCorrect: boolean which says if the answer if a correct answer to the question.
-QuestionID: the question to which this answer is a candidate answer to.
- * Updated by JCasGen Mon Sep 14 19:28:02 EDT 2015
+AnswerID: string that uniquely identifies this answer.
+IsCorrect: boolean which says if the answer is a correct answer to the question.
+QuestionID: the question to which this answer is a candidate answer.
+ * Updated by JCasGen Mon Sep 14 21:13:00 EDT 2015
  * XML source: /Users/Yash/git/pi2-ygaur/pi2-ygaur/src/main/resources/pi2-ygaur-typesystem.xml
  * @generated */
 public class Answer extends MyAnnotation {
