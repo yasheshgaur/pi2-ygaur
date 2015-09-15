@@ -9,17 +9,15 @@ import org.apache.uima.jcas.cas.TOP_Type;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
-/** This object contains annotation for the answers.
-It will contains the floowing fields:
-begin (int): where the annotation begins
-end (int): where the annotation ends
-IsCorrect (boolean): if the answer is correct
-ComponentID (string): The name of the component which produced this annotation object
-Confidence (float): Confidence value assigned by the component which produced this object
- * Updated by JCasGen Sun Sep 13 20:02:13 EDT 2015
+/** Inherited from MyAnnotation.
+Members:
+AnswerID: string that uniquely this answer.
+IsCorrect: boolean which says if the answer if a correct answer to the question.
+QuestionID: the question to which this answer is a candidate answer to.
+ * Updated by JCasGen Mon Sep 14 19:28:02 EDT 2015
  * XML source: /Users/Yash/git/pi2-ygaur/pi2-ygaur/src/main/resources/pi2-ygaur-typesystem.xml
  * @generated */
-public class Answer extends Annotation {
+public class Answer extends MyAnnotation {
   /** @generated
    * @ordered 
    */
@@ -82,9 +80,31 @@ public class Answer extends Annotation {
  
     
   //*--------------*
+  //* Feature: AnswerID
+
+  /** getter for AnswerID - gets Will have values like 'A1', 'A2'.. and will be enough to distinguish this from other questions as well. 
+   * @generated
+   * @return value of the feature 
+   */
+  public String getAnswerID() {
+    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_AnswerID == null)
+      jcasType.jcas.throwFeatMissing("AnswerID", "Answer");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Answer_Type)jcasType).casFeatCode_AnswerID);}
+    
+  /** setter for AnswerID - sets Will have values like 'A1', 'A2'.. and will be enough to distinguish this from other questions as well.  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setAnswerID(String v) {
+    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_AnswerID == null)
+      jcasType.jcas.throwFeatMissing("AnswerID", "Answer");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Answer_Type)jcasType).casFeatCode_AnswerID, v);}    
+   
+    
+  //*--------------*
   //* Feature: IsCorrect
 
-  /** getter for IsCorrect - gets Stores boolean for: Is this answer correct?
+  /** getter for IsCorrect - gets Says if the answer is the answer to this question.
    * @generated
    * @return value of the feature 
    */
@@ -93,7 +113,7 @@ public class Answer extends Annotation {
       jcasType.jcas.throwFeatMissing("IsCorrect", "Answer");
     return jcasType.ll_cas.ll_getBooleanValue(addr, ((Answer_Type)jcasType).casFeatCode_IsCorrect);}
     
-  /** setter for IsCorrect - sets Stores boolean for: Is this answer correct? 
+  /** setter for IsCorrect - sets Says if the answer is the answer to this question. 
    * @generated
    * @param v value to set into the feature 
    */
@@ -104,47 +124,25 @@ public class Answer extends Annotation {
    
     
   //*--------------*
-  //* Feature: ComponentID
+  //* Feature: QuestionID
 
-  /** getter for ComponentID - gets Contains the name of the component which created this annotation.
+  /** getter for QuestionID - gets The question to which this answer is a candidate answer to.
    * @generated
    * @return value of the feature 
    */
-  public String getComponentID() {
-    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_ComponentID == null)
-      jcasType.jcas.throwFeatMissing("ComponentID", "Answer");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((Answer_Type)jcasType).casFeatCode_ComponentID);}
+  public String getQuestionID() {
+    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_QuestionID == null)
+      jcasType.jcas.throwFeatMissing("QuestionID", "Answer");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Answer_Type)jcasType).casFeatCode_QuestionID);}
     
-  /** setter for ComponentID - sets Contains the name of the component which created this annotation. 
+  /** setter for QuestionID - sets The question to which this answer is a candidate answer to. 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setComponentID(String v) {
-    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_ComponentID == null)
-      jcasType.jcas.throwFeatMissing("ComponentID", "Answer");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Answer_Type)jcasType).casFeatCode_ComponentID, v);}    
-   
-    
-  //*--------------*
-  //* Feature: Confidence
-
-  /** getter for Confidence - gets Contains a float value between 0 and 1 which describes the confidence of the component.
-   * @generated
-   * @return value of the feature 
-   */
-  public float getConfidence() {
-    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_Confidence == null)
-      jcasType.jcas.throwFeatMissing("Confidence", "Answer");
-    return jcasType.ll_cas.ll_getFloatValue(addr, ((Answer_Type)jcasType).casFeatCode_Confidence);}
-    
-  /** setter for Confidence - sets Contains a float value between 0 and 1 which describes the confidence of the component. 
-   * @generated
-   * @param v value to set into the feature 
-   */
-  public void setConfidence(float v) {
-    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_Confidence == null)
-      jcasType.jcas.throwFeatMissing("Confidence", "Answer");
-    jcasType.ll_cas.ll_setFloatValue(addr, ((Answer_Type)jcasType).casFeatCode_Confidence, v);}    
+  public void setQuestionID(String v) {
+    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_QuestionID == null)
+      jcasType.jcas.throwFeatMissing("QuestionID", "Answer");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Answer_Type)jcasType).casFeatCode_QuestionID, v);}    
   }
 
     

@@ -12,16 +12,14 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
-/** This object contains annotation for the answers.
-It will contains the floowing fields:
-begin (int): where the annotation begins
-end (int): where the annotation ends
-IsCorrect (boolean): if the answer is correct
-ComponentID (string): The name of the component which produced this annotation object
-Confidence (float): Confidence value assigned by the component which produced this object
- * Updated by JCasGen Sun Sep 13 20:02:13 EDT 2015
+/** Inherited from MyAnnotation.
+Members:
+AnswerID: string that uniquely this answer.
+IsCorrect: boolean which says if the answer if a correct answer to the question.
+QuestionID: the question to which this answer is a candidate answer to.
+ * Updated by JCasGen Mon Sep 14 19:28:02 EDT 2015
  * @generated */
-public class Answer_Type extends Annotation_Type {
+public class Answer_Type extends MyAnnotation_Type {
   /** @generated 
    * @return the generator for this type
    */
@@ -52,6 +50,30 @@ public class Answer_Type extends Annotation_Type {
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("Answer");
  
   /** @generated */
+  final Feature casFeat_AnswerID;
+  /** @generated */
+  final int     casFeatCode_AnswerID;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public String getAnswerID(int addr) {
+        if (featOkTst && casFeat_AnswerID == null)
+      jcas.throwFeatMissing("AnswerID", "Answer");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_AnswerID);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setAnswerID(int addr, String v) {
+        if (featOkTst && casFeat_AnswerID == null)
+      jcas.throwFeatMissing("AnswerID", "Answer");
+    ll_cas.ll_setStringValue(addr, casFeatCode_AnswerID, v);}
+    
+  
+ 
+  /** @generated */
   final Feature casFeat_IsCorrect;
   /** @generated */
   final int     casFeatCode_IsCorrect;
@@ -76,50 +98,26 @@ public class Answer_Type extends Annotation_Type {
   
  
   /** @generated */
-  final Feature casFeat_ComponentID;
+  final Feature casFeat_QuestionID;
   /** @generated */
-  final int     casFeatCode_ComponentID;
+  final int     casFeatCode_QuestionID;
   /** @generated
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public String getComponentID(int addr) {
-        if (featOkTst && casFeat_ComponentID == null)
-      jcas.throwFeatMissing("ComponentID", "Answer");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_ComponentID);
+  public String getQuestionID(int addr) {
+        if (featOkTst && casFeat_QuestionID == null)
+      jcas.throwFeatMissing("QuestionID", "Answer");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_QuestionID);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setComponentID(int addr, String v) {
-        if (featOkTst && casFeat_ComponentID == null)
-      jcas.throwFeatMissing("ComponentID", "Answer");
-    ll_cas.ll_setStringValue(addr, casFeatCode_ComponentID, v);}
-    
-  
- 
-  /** @generated */
-  final Feature casFeat_Confidence;
-  /** @generated */
-  final int     casFeatCode_Confidence;
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @return the feature value 
-   */ 
-  public float getConfidence(int addr) {
-        if (featOkTst && casFeat_Confidence == null)
-      jcas.throwFeatMissing("Confidence", "Answer");
-    return ll_cas.ll_getFloatValue(addr, casFeatCode_Confidence);
-  }
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @param v value to set 
-   */    
-  public void setConfidence(int addr, float v) {
-        if (featOkTst && casFeat_Confidence == null)
-      jcas.throwFeatMissing("Confidence", "Answer");
-    ll_cas.ll_setFloatValue(addr, casFeatCode_Confidence, v);}
+  public void setQuestionID(int addr, String v) {
+        if (featOkTst && casFeat_QuestionID == null)
+      jcas.throwFeatMissing("QuestionID", "Answer");
+    ll_cas.ll_setStringValue(addr, casFeatCode_QuestionID, v);}
     
   
 
@@ -135,16 +133,16 @@ public class Answer_Type extends Annotation_Type {
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
  
+    casFeat_AnswerID = jcas.getRequiredFeatureDE(casType, "AnswerID", "uima.cas.String", featOkTst);
+    casFeatCode_AnswerID  = (null == casFeat_AnswerID) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_AnswerID).getCode();
+
+ 
     casFeat_IsCorrect = jcas.getRequiredFeatureDE(casType, "IsCorrect", "uima.cas.Boolean", featOkTst);
     casFeatCode_IsCorrect  = (null == casFeat_IsCorrect) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_IsCorrect).getCode();
 
  
-    casFeat_ComponentID = jcas.getRequiredFeatureDE(casType, "ComponentID", "uima.cas.String", featOkTst);
-    casFeatCode_ComponentID  = (null == casFeat_ComponentID) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_ComponentID).getCode();
-
- 
-    casFeat_Confidence = jcas.getRequiredFeatureDE(casType, "Confidence", "uima.cas.Float", featOkTst);
-    casFeatCode_Confidence  = (null == casFeat_Confidence) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Confidence).getCode();
+    casFeat_QuestionID = jcas.getRequiredFeatureDE(casType, "QuestionID", "uima.cas.String", featOkTst);
+    casFeatCode_QuestionID  = (null == casFeat_QuestionID) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_QuestionID).getCode();
 
   }
 }

@@ -6,80 +6,118 @@
     <vendor/>
   <types>
     <typeDescription>
-      <name>Answer</name>
-      <description>This object contains annotation for the answers.
-It will contains the floowing fields:
-begin (int): where the annotation begins
-end (int): where the annotation ends
-IsCorrect (boolean): if the answer is correct
-ComponentID (string): The name of the component which produced this annotation object
-Confidence (float): Confidence value assigned by the component which produced this object</description>
+      <name>MyAnnotation</name>
+      <description>This is a super class for all the defined annotations.
+It will contain: 
+-&gt;ComponentID: The name of the component that produced it.
+-&gt;Confidence: A float value in (0,1) which shows the confidence of ComponentID in the annotation.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
-          <name>IsCorrect</name>
-          <description>Stores boolean for: Is this answer correct?</description>
-          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
           <name>ComponentID</name>
-          <description>Contains the name of the component which created this annotation.</description>
+          <description>Name of the Annotator that produced this annotation.</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>Confidence</name>
-          <description>Contains a float value between 0 and 1 which describes the confidence of the component.</description>
+          <description>Confidence of the annotator in producing this annotation.</description>
           <rangeTypeName>uima.cas.Float</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
       <name>Question</name>
-      <description>This information object annotates the question present in the input file. Apart from the inherited elements like begin and end, it also contains:
--&gt; ComponentID: tells the name of the component that produced it.
--&gt; Confidence: float value in (0,1) depicts the confidence of Component that produced it.</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <description>Inherited from MyAnnotation.
+Members:
+-&gt;QuestionID: string which uniquely identifies a question. For eg., the questions can have IDs like 'Q1', 'Q2' .. etc. This ID will be sufficient to distinguish it from an answer as well </description>
+      <supertypeName>MyAnnotation</supertypeName>
       <features>
         <featureDescription>
-          <name>ComponentID</name>
-          <description>Name of the component that created this annotation</description>
+          <name>QuestionID</name>
+          <description>A string that uniquely charachterizes this question.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>Answer</name>
+      <description>Inherited from MyAnnotation.
+Members:
+AnswerID: string that uniquely this answer.
+IsCorrect: boolean which says if the answer if a correct answer to the question.
+QuestionID: the question to which this answer is a candidate answer to.</description>
+      <supertypeName>MyAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>AnswerID</name>
+          <description>Will have values like 'A1', 'A2'.. and will be enough to distinguish this from other questions as well. </description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
-          <name>Confidence</name>
-          <description>Confidence that Component ID had for this annotation</description>
-          <rangeTypeName>uima.cas.Float</rangeTypeName>
+          <name>IsCorrect</name>
+          <description>Says if the answer is the answer to this question.</description>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>QuestionID</name>
+          <description>The question to which this answer is a candidate answer to.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>Token</name>
+      <description>Inherited from MyAnnotation.
+Members:
+-&gt;SentenceID: The QuestionID or AnswerID to which this token belongs.
+-&gt;TokenID: The sequence number of the token within the SentenceID. Useful when adjaceny information is requried while calculating NGrams. 
+
+Combination of SentenceID and TokenID uniquely charachterizes the Token </description>
+      <supertypeName>MyAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>SentenceID</name>
+          <description>AnswerID or QuestionID to which this token belongs.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>TokenID</name>
+          <description>The sequence number of the token within that SentenceID</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>NGram</name>
+      <description>Inherited from MyAnnotation.
+Members:
+-&gt;SentenceID: The sentence (QuestionID or AnswerID) to which this NGram belongs.</description>
+      <supertypeName>MyAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>SentenceID</name>
+          <description>The QuestionID or AnswerID that this NGram belongs.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
       <name>AnswerScore</name>
-      <description>Annotates the scores for each answer. Apart from the inherited elements like begin and end, it also contains:
--&gt; ComponentID: name of the component that created the annotation
--&gt; Confidence: Confidence ComponentID had in the annotation.
--&gt; Score: float in (0,1) which tells how likely this answer is an answer to the question.
--&gt; Answer: The actual answer that is being evaluated. </description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <description>Inherited from MyAnnotation.
+Members:
+-&gt;AnswerID: The answer to which this score is. 
+-&gt;Score: The score for the overlap.</description>
+      <supertypeName>MyAnnotation</supertypeName>
       <features>
         <featureDescription>
-          <name>ComponentID</name>
-          <description>Name of the component which produced this annotation</description>
+          <name>AnswerID</name>
+          <description>The ID to the answer for which this score is.</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
-          <name>Confidence</name>
-          <description>Confidence that the annotator had in this annotation</description>
-          <rangeTypeName>uima.cas.Float</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
           <name>Score</name>
-          <description>The score which depicts how likely is this answer going to answer the question</description>
+          <description>The score assigned by the NGram overlapper</description>
           <rangeTypeName>uima.cas.Float</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>Answer</name>
-          <description>The Answer for which the score if being generated</description>
-          <rangeTypeName>Answer</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
